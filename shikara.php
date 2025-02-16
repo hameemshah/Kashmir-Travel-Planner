@@ -24,21 +24,21 @@
           <th>Sr. No</th>
           <th>Shikara Name</th>
           <th>Mobile No</th>
-          <th>Address</th>
+          <th>City</th>
           <th>Operations</th>
         </tr>
         <?php  
-              $query=mysqli_query($conn,"SELECT * FROM shik");
+              $query=mysqli_query($dbc,"SELECT * FROM shik");
               $count=1;
               while($r=mysqli_fetch_array($query))
                 {
          ?>
         <tr>
           <td><?php echo($count); ?></td>
-          <td><?php echo htmlentities($r['Name']); ?></td>
-          <td><?php echo htmlentities($r['Mobile_No']);  ?></td>
-          <td><?php echo htmlentities($r['Address']); ?></td>
-          <td><a href="shikaradetail.php?id=<?php echo $r['Email'] ?>"><input type="submit" value="Select" class="btn btn-primary"></a>
+          <td><?php echo htmlentities($r['name']); ?></td>
+          <td><?php echo htmlentities($r['mobile']);  ?></td>
+          <td><?php echo htmlentities($r['city']); ?></td>
+          <td><a href="shikaradetail.php?id=<?php echo $r['email'] ?>"><input type="submit" value="Select" class="btn btn-primary"></a>
           </td>
   <?php  
 $count++;

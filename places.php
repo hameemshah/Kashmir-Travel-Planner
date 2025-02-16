@@ -1,7 +1,7 @@
 <?php include 'header.php' ?>
 <?php  
 $name=($_GET['id']);
-$query=mysqli_query($conn,"SELECT * FROM places WHERE name='$name'");
+$query=mysqli_query($dbc,"SELECT * FROM places WHERE name='$name'");
 $count=1;
  while($r=mysqli_fetch_array($query))
  {

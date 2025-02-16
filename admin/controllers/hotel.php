@@ -1,238 +1,63 @@
 <?php
-$name = "";
-$prop = "";
-$eid = "";
-$mob = "";
-$city = "";
-$address = "";
-$type = "";
-$amount = "";
-$breakfast = "";
-$lunch = "";
-$dinner = "";
-$airport = "";
-$busstand = "";
-$wifi = "";
-$gyser = "";
-$pick = "";
-$balcony = "";
-$lake = "";
-$ctview = "";
-$kitchen = "";
-$led = "";
-$ac = "";
-$mount = "";
-$bathroom = "";
-$tele = "";
-$target_file ="";
+
+// Define upload directory
+$upload_dir = "../assets/img/hotels/";
 
 if (isset($_POST['save'])) {
-  $name = $_POST['name'];
-  $prop = $_POST['prop'];
-  $eid = $_POST['eid'];
-  $mob = $_POST['mob'];
-  $city = $_POST['city'];
-  $address = $_POST['address'];
-  $target_file = $target_dir . basename($_FILES["pic1"]["name"]);
-  $pic1 = $target_file;
-  $target_file2 = $target_dir . basename($_FILES["pic2"]["name"]);
-  $pic2 = $target_file2;
-  $target_file3 = $target_dir . basename($_FILES["pic3"]["name"]);
-  $pic3 = $target_file3;
-  $type = $_POST['type'];
-  $amount = $_POST['amount'];
-  $breakfast = $_POST['breakfast'];
-  $lunch = $_POST['lunch'];
-  $dinner = $_POST['dinner'];
-  $airport = $_POST['airport'];
-  $busstand = $_POST['busstand'];
-  $wifi = $_POST['wifi'];
-  $gyser = $_POST['gyser'];
-  $pick = $_POST['pick'];
-  $balcony = $_POST['balcony'];
-  $lake = $_POST['lake'];
-  $ctview = $_POST['ctview'];
-  $kitchen = $_POST['kitchen'];
-  $led = $_POST['led'];
-  $ac = $_POST['ac'];
-  $mount = $_POST['mount'];
-  $bathroom = $_POST['bathroom'];
-  $tele = $_POST['tele'];
-  $data = "INSERT INTO hotel(Name,Property,Email,Mobile_No,City,Address,Pic1,Pic2,Pic3,Type,Amount,Breakfast,Lunch,Dinner,Airport,Bus_Stand,Wifi,Gyser,AC,Mount,LED,Bathroom,Pick_Drop,Balcony,Lake_View,City_View,Kitchen,Telephone)  VALUES ('$name','$prop','$eid','$mob','$city','$address','$pic1','$pic2','$pic3','$type','$amount','$breakfast','$lunch','$dinner','$airport','$busstand','$wifi','$gyser','$ac','$mount','$led','$bathroom','$pick','$balcony','$lake','$ctview','$kitchen','$tele')";
-  $res = mysqli_query($dbc, $data);
-  $name = "";
-  $prop = "";
-  $eid = "";
-  $mob = "";
-  $city = "";
-  $address = "";
-  $type = "";
-  $amount = "";
-  $breakfast = "";
-  $lunch = "";
-  $dinner = "";
-  $airport = "";
-  $busstand = "";
-  $wifi = "";
-  $gyser = "";
-  $pick = "";
-  $balcony = "";
-  $lake = "";
-  $ctview = "";
-  $kitchen = "";
-  $led = "";
-  $ac = "";
-  $mount = "";
-  $bathroom = "";
-  $tele = "";
+
+    // Sanitize user input
+    $name = mysqli_real_escape_string($dbc, $_POST['name']);
+    $owner = mysqli_real_escape_string($dbc, $_POST['owner']);
+    $email = mysqli_real_escape_string($dbc, $_POST['email']);
+    $contact = mysqli_real_escape_string($dbc, $_POST['contact']);
+    $address = mysqli_real_escape_string($dbc, $_POST['address']);
+    $city = mysqli_real_escape_string($dbc, $_POST['city']);
+    $type = mysqli_real_escape_string($dbc, $_POST['type']);
+    $amount = mysqli_real_escape_string($dbc, $_POST['amount']);
+
+    // Amenities & Additional Features
+    $breakfast = mysqli_real_escape_string($dbc, $_POST['breakfast']);
+    $lunch = mysqli_real_escape_string($dbc, $_POST['lunch']);
+    $dinner = mysqli_real_escape_string($dbc, $_POST['dinner']);
+    $wifi = mysqli_real_escape_string($dbc, $_POST['wifi']);
+    $ac = mysqli_real_escape_string($dbc, $_POST['ac']);
+    $kitchen = mysqli_real_escape_string($dbc, $_POST['kitchen']);
+
+    // Handle file uploads
+    $pic1 = !empty($_FILES['pic1']['name']) ? uploadImage($_FILES['pic1'], $upload_dir) : "";
+    $pic2 = !empty($_FILES['pic2']['name']) ? uploadImage($_FILES['pic2'], $upload_dir) : "";
+    $pic3 = !empty($_FILES['pic3']['name']) ? uploadImage($_FILES['pic3'], $upload_dir) : "";
+
+    // Insert data into the database
+    $query = "INSERT INTO hotels (name, owner, email, mobile, address, city, type, amount, 
+                breakfast, lunch, dinner, wifi, ac, kitchen, pic1, pic2, pic3) 
+              VALUES ('$name', '$owner', '$email', '$contact', '$address', '$city', '$type', '$amount', 
+                      '$breakfast', '$lunch', '$dinner', '$wifi', '$ac', '$kitchen', '$pic1', '$pic2', '$pic3')";
+
+    if (mysqli_query($dbc, $query)) {
+        echo "<script>alert('Hotel added successfully!'); window.location.href='manage_hotels.php';</script>";
+    } else {
+        echo "Error: " . mysqli_error($dbc);
+    }
 }
-if (isset($_POST['search'])) {
-  $eid = $_POST['eid'];
-  $query = "SELECT * FROM hotel WHERE Email='$eid'";
-  $val = mysqli_query($dbc, $query);
-  while ($r = mysqli_fetch_array($val)) {
-    $name = $r['Name'];
-    $prop = $r['Property'];
-    $mob = $r['Mobile_No'];
-    $address = $r['Address'];
-    $city = $r['City'];
-    $pic1 = $r['Pic1'];
-    $pic2 = $r['Pic2'];
-    $pic3 = $r['Pic3'];
-    $type = $r['Type'];
-    $amount = $r['Amount'];
-    $breakfast = $r['Breakfast'];
-    $lunch = $r['Lunch'];
-    $dinner = $r['Dinner'];
-    $airport = $r['Airport'];
-    $busstand = $r['Bus_Stand'];
-    $wifi = $r['Wifi'];
-    $gyser = $r['Gyser'];
-    $pick = $r['Pick_Drop'];
-    $balcony = $r['Balcony'];
-    $lake = $r['Lake_View'];
-    $ctview = $r['City_View'];
-    $kitchen = $r['Kitchen'];
-    $led = $r['LED'];
-    $ac = $r['AC'];
-    $mount = $r['Mount'];
-    $bathroom = $r['Bathroom'];
-    $tele = $r['Telephone'];
+
+/**
+ * Function to handle file uploads
+ * @param array $file Uploaded file data
+ * @param string $upload_dir Target directory
+ * @return string Filename if uploaded successfully, empty string otherwise
+ */
+function uploadImage($file, $upload_dir) {
+  if ($file['error'] == UPLOAD_ERR_OK) {
+      $filename = basename($file['name']);
+      $target_path = $upload_dir . $filename;
+      
+      if (move_uploaded_file($file['tmp_name'], $target_path)) {
+          return $filename; // Store only the filename in DB
+      } else {
+          echo "Error uploading file: $filename";
+      }
   }
-}
-if (isset($_POST['update'])) {
-  $name = $_POST['name'];
-  $prop = $_POST['prop'];
-  $eid = $_POST['eid'];
-  $mob = $_POST['mob'];
-  $city = $_POST['city'];
-  $address = $_POST['address'];
-  $target_file = $target_dir . basename($_FILES["pic1"]["name"]);
-  $pic1 = $target_file;
-  $target_file2 = $target_dir . basename($_FILES["pic2"]["name"]);
-  $pic2 = $target_file2;
-  $target_file3 = $target_dir . basename($_FILES["pic3"]["name"]);
-  $type = $_POST['type'];
-  $amount = $_POST['amount'];
-  $breakfast = $_POST['breakfast'];
-  $lunch = $_POST['lunch'];
-  $dinner = $_POST['dinner'];
-  $airport = $_POST['airport'];
-  $busstand = $_POST['busstand'];
-  $wifi = $_POST['wifi'];
-  $gyser = $_POST['gyser'];
-  $pick = $_POST['pick'];
-  $balcony = $_POST['balcony'];
-  $lake = $_POST['lake'];
-  $ctview = $_POST['ctview'];
-  $kitchen = $_POST['kitchen'];
-  $led = $_POST['led'];
-  $ac = $_POST['ac'];
-  $mount = $_POST['mount'];
-  $bathroom = $_POST['bathroom'];
-  $tele = $_POST['tele'];
-  $query = "UPDATE hotel set Name='$name',Property='$prop',Mobile_No='$mob',City='$city',Address='$address',Pic1='$pic',Pic2='$pic2',Pic3='pic3' WHERE Email='$eid'";
-  mysqli_query($dbc, $query);
-  $name = "";
-  $prop = "";
-  $eid = "";
-  $mob = "";
-  $city = "";
-  $address = "";
-  $type = "";
-  $amount = "";
-  $breakfast = "";
-  $lunch = "";
-  $dinner = "";
-  $airport = "";
-  $busstand = "";
-  $wifi = "";
-  $gyser = "";
-  $pick = "";
-  $balcony = "";
-  $lake = "";
-  $ctview = "";
-  $kitchen = "";
-  $led = "";
-  $ac = "";
-  $mount = "";
-  $bathroom = "";
-  $tele = "";
-}
-if (isset($_POST['delete'])) {
-  $eid = $_POST['eid'];
-  $query = "DELETE from hotel WHERE Email='$eid'";
-  mysqli_query($dbc, $query);
-  $name = "";
-  $prop = "";
-  $mob = "";
-  $city = "";
-  $address = "";
-  $type = "";
-  $amount = "";
-  $breakfast = "";
-  $lunch = "";
-  $dinner = "";
-  $airport = "";
-  $busstand = "";
-  $wifi = "";
-  $gyser = "";
-  $pick = "";
-  $balcony = "";
-  $lake = "";
-  $ctview = "";
-  $kitchen = "";
-  $led = "";
-  $ac = "";
-  $mount = "";
-  $bathroom = "";
-  $tele = "";
-}
-if (isset($_POST['clear'])) {
-  $name = "";
-  $prop = "";
-  $eid = "";
-  $mob = "";
-  $city = "";
-  $address = "";
-  $type = "";
-  $amount = "";
-  $breakfast = "";
-  $lunch = "";
-  $dinner = "";
-  $airport = "";
-  $busstand = "";
-  $wifi = "";
-  $gyser = "";
-  $pick = "";
-  $balcony = "";
-  $lake = "";
-  $ctview = "";
-  $kitchen = "";
-  $led = "";
-  $ac = "";
-  $mount = "";
-  $bathroom = "";
-  $tele = "";
+  return "";
 }
 ?>

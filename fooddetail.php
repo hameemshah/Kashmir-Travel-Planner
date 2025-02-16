@@ -38,7 +38,7 @@
       <div class="container">
 <?php  
 $eid=($_GET['id']);
-$query=mysqli_query($conn,"SELECT * FROM foods WHERE Email='$eid'");
+$query=mysqli_query($dbc,"SELECT * FROM foods WHERE Email='$eid'");
 $count=1;
  while($r=mysqli_fetch_array($query))
  {
@@ -57,7 +57,7 @@ $count=1;
  
   //$eid=($_GET['id']);
   //echo $eid;
-  $query=mysqli_query($conn,"SELECT * FROM foods where Email='$eid'");
+  $query=mysqli_query($dbc,"SELECT * FROM foods where Email='$eid'");
   while($r=mysqli_fetch_array($query))
  {
 

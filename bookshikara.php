@@ -4,7 +4,7 @@
         $eid=($_GET['id']); 
         ?>
 <?php
-$query=mysqli_query($conn,"SELECT * FROM shik WHERE Email='$eid'");
+$query=mysqli_query($dbc,"SELECT * FROM shik WHERE Email='$eid'");
 $count=1;
 ?>
     <!-- ======= Breadcrumbs Section ======= -->
@@ -105,7 +105,7 @@ $count=1;
    $cpin=$_POST['cpin'];
    $amount=$_POST['amount'];
   $data="INSERT INTO bookshikara(id,cname,ceid,ccnum,cin,cout,crcnum,bank,cpin,amount) VALUES ('$eid','$cname','$ceid','$ccnum','$cin','$cout','$crcnum','$bank','$cpin','$amount')";
-  mysqli_query($conn,$data);
+  mysqli_query($dbc,$data);
 ?>
 <script type="text/javascript">
 alert("Hotel Booking Successful");

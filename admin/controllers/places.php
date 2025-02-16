@@ -1,93 +1,49 @@
 <?php
-$name="";
- $type="";
- $district="";
- $distance="";
- $pop1=""; $pop2=""; $pop3="";
- $pop1=""; $pop2=""; $pop3="";
- $detail="";
-if(isset($_POST['save'])) 
-{
- $name=$_POST['name'];
- $district=$_POST['district'];
- $type=$_POST['type'];
- $pop1=$_POST['pop1'];
- $pop2=$_POST['pop2'];
- $pop3=$_POST['pop3'];
- $distance=$_POST['distance'];
- $detail=$_POST['detail'];
- $target_file = $target_dir . basename($_FILES["pic1"]["name"]);
- $pic1=$target_file;
- $target_file2 = $target_dir . basename($_FILES["pic2"]["name"]);
- $pic2=$target_file2;
- $target_file3 = $target_dir . basename($_FILES["pic3"]["name"]);
- $pic3=$target_file3;
- $data="INSERT INTO places(name,type,district,pop1,pop2,pop3,distance,detail,pic1,pic2,pic3)  VALUES ('$name','$type','$district','$pop1','$pop2','$pop3','$distance','$detail','$pic1','$pic2','$pic3')";
- mysqli_query($dbc,$data);
+
+// Define upload directory
+$upload_dir = "../assets/img/places/";
+
+if (isset($_POST['save'])) {
+    $name =  mysqli_real_escape_string($dbc, $_POST['name']);
+    $district =  mysqli_real_escape_string($dbc, $_POST['district']);
+    $type =  mysqli_real_escape_string($dbc, $_POST['type']);
+    $pop1 =  mysqli_real_escape_string($dbc, $_POST['pop1']);
+    $pop2 =  mysqli_real_escape_string($dbc, $_POST['pop2']);
+    $pop3 =  mysqli_real_escape_string($dbc, $_POST['pop3']);
+    $distance =  mysqli_real_escape_string($dbc, $_POST['distance']);
+    $detail =  mysqli_real_escape_string($dbc, $_POST['detail']);
+
+    // Handle file uploads
+    $pic1 = !empty($_FILES['pic1']['name']) ? uploadImage($_FILES['pic1'], $upload_dir) : "";
+    $pic2 = !empty($_FILES['pic2']['name']) ? uploadImage($_FILES['pic2'], $upload_dir) : "";
+    $pic3 = !empty($_FILES['pic3']['name']) ? uploadImage($_FILES['pic3'], $upload_dir) : "";
+
+    $query = "INSERT INTO places(name,type,district,pop1,pop2,pop3,distance,detail,pic1,pic2,pic3)  VALUES ('$name','$type','$district','$pop1','$pop2','$pop3','$distance','$detail','$pic1','$pic2','$pic3')";
+
+    if (mysqli_query($dbc, $query)) {
+        echo "<script>alert('Place added successfully!'); window.location.href='manage_place.php';</script>";
+    } else {
+        echo "Error: " . mysqli_error($dbc);
+    }
 }
-if(isset($_POST['search']))
+
+/**
+ * Function to handle file uploads
+ * @param array $file Uploaded file data
+ * @param string $upload_dir Target directory
+ * @return string Filename if uploaded successfully, empty string otherwise
+ */
+function uploadImage($file, $upload_dir)
 {
- $name=$_POST['name'];
- $query="SELECT * FROM places WHERE name='$name'";
- $val=mysqli_query($dbc,$query);
- while($r=mysqli_fetch_array($val))
- {
-   $name=$r['name'];
-   $type=$r['type'];
-   $district=$r['district'];
-   $pop1=$r['pop1'];
-   $pop2=$r['pop2'];
-   $pop3=$r['pop3'];
-   $distance=$r['distance'];
-   $detail=$r['detail'];
-   $pic1=$r['pic1'];
-   $pic2=$r['pic2'];
-   $pic3=$r['pic3'];
- }
+    if ($file['error'] == UPLOAD_ERR_OK) {
+        $filename = basename($file['name']);
+        $target_path = $upload_dir . $filename;
+
+        if (move_uploaded_file($file['tmp_name'], $target_path)) {
+            return $filename; // Store only the filename in DB
+        } else {
+            echo "Error uploading file: $filename";
+        }
+    }
+    return "";
 }
-if(isset($_POST['update']))
-{
-  $name=$_POST['name'];
- $district=$_POST['district'];
- $type=$_POST['type'];
- $pop1=$_POST['pop1'];
- $pop2=$_POST['pop2'];
- $pop3=$_POST['pop3'];
- $distance=$_POST['distance'];
-  $detail=$_POST['detail'];
- $pic1=$_POST['pic1'];
- $pic2=$_POST['pic2'];
- $pic3=$_POST['pic3'];	
- $query="UPDATE foods set detail='$detail',district='$district',type='$type',pop1='$pop1',pop2='$pop2',pop3='$pop3',distance='$distance',pic1='$pic',pic2='$pic2',pic3='pic3' WHERE name='$name'";
- mysqli_query($dbc,$query);
- $name="";
- $prop="";
- $eid="";
- $mob="";
- $city="";
- $address="";
- }
-  if(isset($_POST['delete']))
- {
-  $name=$_POST['name'];
-  $query="DELETE from places WHERE name='$name'";
-  mysqli_query($dbc,$query);
-  $name="";
-  $type="";
- $district="";
- $distance="";
- $pop1=""; $pop2=""; $pop3="";
- $pic1=""; $pic2=""; $pic3="";
- $detail="";
- }
- if(isset($_POST['clear']))
- {
- $name="";
-  $type="";
- $district="";
- $distance="";
- $pop1=""; $pop2=""; $pop3="";
- $pic1=""; $pic2=""; $pic3="";
- $detail="";
- }
-?>

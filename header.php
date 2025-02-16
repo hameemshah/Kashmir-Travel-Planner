@@ -1,5 +1,5 @@
 <!-- connection to database -->
-<?php include 'config.php' ?>
+<?php include './admin/config/db.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 

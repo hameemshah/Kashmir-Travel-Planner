@@ -58,7 +58,7 @@
    foodorder(id,food,cname,ceid,address)
     VALUES 
     ('$eid','$food','$cname','$ceid','$address')";
-  mysqli_query($conn,$data);
+  mysqli_query($dbc,$data);
 ?>
 <script type="text/javascript">
 alert("Food Order Successful");

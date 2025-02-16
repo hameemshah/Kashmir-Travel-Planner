@@ -29,7 +29,7 @@
           <th>Operations</th>
         </tr>
         <?php  
-              $query=mysqli_query($conn,"SELECT * FROM foods");
+              $query=mysqli_query($dbc,"SELECT * FROM foods");
               $count=1;
               while($r=mysqli_fetch_array($query))
                 {

@@ -37,7 +37,7 @@
       <div class="container">
           <?php 
            $eid=($_GET['id']);
-$query=mysqli_query($conn,"SELECT * FROM shik WHERE Email='$eid'");
+$query=mysqli_query($dbc,"SELECT * FROM shik WHERE Email='$eid'");
 $count=1;
 while($r=mysqli_fetch_array($query))
 { 

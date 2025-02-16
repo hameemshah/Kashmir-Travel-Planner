@@ -12,19 +12,19 @@
     </a>
     <hr class="my-1">
 
-    <a href="hotel.php" class="d-flex align-items-center mb-3 text-decoration-none">
+    <a href="manage_hotel.php" class="d-flex align-items-center mb-3 text-decoration-none">
       <img src="icons/hotels.png" alt="hotel-icon" class="me-2" width="22" height="24">
       <span>Hotel</span>
     </a>
     <hr class="my-1">
 
-    <a href="food.php" class="d-flex align-items-center mb-3 text-decoration-none">
+    <a href="manage_food.php" class="d-flex align-items-center mb-3 text-decoration-none">
       <img src="icons/cutlery.png" alt="food-icon" class="me-2" width="20" height="24">
       <span>Food</span>
     </a>
     <hr class="my-1">
 
-    <a href="shikara.php" class="d-flex align-items-center mb-3 text-decoration-none">
+    <a href="manage_shikara.php" class="d-flex align-items-center mb-3 text-decoration-none">
       <img src="icons/boat.png" alt="boat-logo" class="me-2" width="21" height="23">
       <span>Shikara</span>
     </a>
@@ -36,7 +36,7 @@
     </a>
     <hr class="my-1">
 
-    <a href="places.php" class="d-flex align-items-center mb-3 text-decoration-none">
+    <a href="manage_place.php" class="d-flex align-items-center mb-3 text-decoration-none">
       <img src="icons/site.png" alt="report-icon" class="me-2" width="20" height="24">
       <span>Places</span>
     </a>
