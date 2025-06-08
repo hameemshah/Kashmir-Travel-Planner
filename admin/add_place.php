@@ -14,42 +14,42 @@ include 'controllers/places.php';
 
   <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" class="form-control" name="name" id="name" value="<?php echo $name; ?>" placeholder="Enter place name" />
+    <input type="text" class="form-control" name="name" id="name" value="" placeholder="Enter place name" />
   </div>
 
   <div class="form-group">
     <label for="type">Type:</label>
-    <input type="text" class="form-control" name="type" id="type" value="<?php echo $type; ?>" placeholder="Enter place type" />
+    <input type="text" class="form-control" name="type" id="type" value="" placeholder="Enter place type" />
   </div>
 
   <div class="form-group">
     <label for="district">District:</label>
-    <input type="text" class="form-control" name="district" id="district" value="<?php echo $district; ?>" placeholder="Enter district" />
+    <input type="text" class="form-control" name="district" id="district" value="" placeholder="Enter district" />
   </div>
 
   <div class="form-group">
     <label for="popular-for">Popular For:</label>
     <div class="row">
       <div class="col-md-4">
-        <input type="text" class="form-control" name="pop1" id="pop1" value="<?php echo $pop1; ?>" placeholder="Popular for 1" />
+        <input type="text" class="form-control" name="pop1" id="pop1" value="" placeholder="Popular for 1" />
       </div>
       <div class="col-md-4">
-        <input type="text" class="form-control" name="pop2" id="pop2" value="<?php echo $pop2; ?>" placeholder="Popular for 2" />
+        <input type="text" class="form-control" name="pop2" id="pop2" value="" placeholder="Popular for 2" />
       </div>
       <div class="col-md-4">
-        <input type="text" class="form-control" name="pop3" id="pop3" value="<?php echo $pop3; ?>" placeholder="Popular for 3" />
+        <input type="text" class="form-control" name="pop3" id="pop3" value="" placeholder="Popular for 3" />
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <label for="distance">Distance:</label>
-    <input type="text" class="form-control" name="distance" id="distance" value="<?php echo $distance; ?>" placeholder="Enter distance" />
+    <input type="text" class="form-control" name="distance" id="distance" value="" placeholder="Enter distance" />
   </div>
 
   <div class="form-group">
     <label for="detail">Description:</label>
-    <textarea class="form-control" name="detail" id="detail" cols="30" rows="5" placeholder="Description of Place"><?php echo $detail; ?></textarea>
+    <textarea class="form-control" name="detail" id="detail" cols="30" rows="5" placeholder="Description of Place"></textarea>
   </div>
 
   <div class="form-group">

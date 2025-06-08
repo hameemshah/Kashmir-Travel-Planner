@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div class="mb-3">
                 <label class="form-label">Owner</label>
-                <input type="text" name="prop" class="form-control" value="<?= htmlspecialchars($row['prop']) ?>" required>
+                <input type="text" name="prop" class="form-control" value="<?= htmlspecialchars($row['owner']) ?>" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>

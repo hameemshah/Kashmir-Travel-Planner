@@ -62,13 +62,13 @@
 
         <h2><?php echo $name; ?></h2>
         <div class="pics-3">
-          <img src="assets/img/hotels/<?php echo !empty($r['Pic1']) ? htmlentities($r['Pic1']) : 'default.jpg'; ?>" width="100%">
+          <img src="assets/img/hotels/<?php echo !empty($r['pic1']) ? htmlentities($r['pic1']) : 'default.jpg'; ?>" width="100%">
         </div>
         <div class="pics-3">
-          <img src="assets/img/hotels/<?php echo !empty($r['Pic1']) ? htmlentities($r['Pic2']) : 'default.jpg'; ?>" width="100%">
+          <img src="assets/img/hotels/<?php echo !empty($r['pic2']) ? htmlentities($r['pic2']) : 'default.jpg'; ?>" width="100%">
         </div>
         <div class="pics-3">
-          <img src="assets/img/hotels/<?php echo !empty($r['Pic3']) ? htmlentities($r['Pic1']) : 'default.jpg'; ?>" width="100%">
+          <img src="assets/img/hotels/<?php echo !empty($r['pic3']) ? htmlentities($r['pic3']) : 'default.jpg'; ?>" width="100%">
         </div>
     </div>
     <div class="clearfix"></div>

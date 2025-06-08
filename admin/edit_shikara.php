@@ -2,7 +2,6 @@
 $page_title = "Update Shikara";
 include 'partials/header.php';
 include 'config/loggedin.php';
-include 'config/db.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

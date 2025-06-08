@@ -63,13 +63,13 @@ $count=1;
 
   ?> 
         <div class="pics-3">
-        <img src="assets/img/foods/<?php echo htmlentities($r['Pic1']);?>" width="100%">
+        <img src="assets/img/foods/<?php echo !empty($r['Pic1']) ? htmlentities($r['Pic1']) : 'default.jpg'; ?>" width="100%">
       </div>
       <div class="pics-3">
-        <img src="assets/img/foods/<?php echo htmlentities($r['Pic2']);?>" width="100%">
+        <img src="assets/img/foods/<?php echo !empty($r['Pic2']) ? htmlentities($r['Pic2']) : 'default.jpg'; ?>" width="100%">
       </div>
       <div class="pics-3">
-        <img src="assets/img/foods/<?php echo htmlentities($r['Pic3']);?>" width="100%">
+        <img src="assets/img/foods/<?php echo !empty($r['Pic3']) ? htmlentities($r['Pic3']) : 'default.jpg'; ?>" width="100%">
       </div>
  <?php 
 } ?>

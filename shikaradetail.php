@@ -41,12 +41,10 @@ $query=mysqli_query($dbc,"SELECT * FROM shik WHERE Email='$eid'");
 $count=1;
 while($r=mysqli_fetch_array($query))
 { 
- $name=htmlentities($r['Name']);
- $prop=htmlentities($r['Property']);
- $eid=htmlentities($r['Email']);
- $mob=htmlentities($r['Mobile_No']);
- $city=htmlentities($r['City']);
- $address=htmlentities($r['Address']);
+ $name=htmlentities($r['name']);
+ $eid=htmlentities($r['email']);
+ $mob=htmlentities($r['mobile']);
+ $city=htmlentities($r['city']);
   ?>  
 
       <h2><?php echo $name;?></h2>
@@ -74,10 +72,6 @@ while($r=mysqli_fetch_array($query))
     <td><?php echo $name; ?></td>
    </tr>
      <tr>
-    <td>Proprietor</td>
-    <td><?php echo $prop; ?></td>
-   </tr>
-     <tr>
     <td>Email</td>
     <td><?php echo $eid; ?></td>
    </tr>
@@ -90,7 +84,7 @@ while($r=mysqli_fetch_array($query))
     <td><?php echo $city; ?></td>
    </tr>
  </table>
- <a href="bookshikara.php?id=<?php echo $r['Email'] ?>"><input type="submit" name="book" value="Book" class="btn btn-primary"></a>
+ <a href="bookshikara.php?id=<?php echo $r['email'] ?>"><input type="submit" name="book" value="Book" class="btn btn-primary"></a>
  <?php 
 } ?>
       </div>

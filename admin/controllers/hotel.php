@@ -35,7 +35,7 @@ if (isset($_POST['save'])) {
                       '$breakfast', '$lunch', '$dinner', '$wifi', '$ac', '$kitchen', '$pic1', '$pic2', '$pic3')";
 
     if (mysqli_query($dbc, $query)) {
-        echo "<script>alert('Hotel added successfully!'); window.location.href='manage_hotels.php';</script>";
+        echo "<script>alert('Hotel added successfully!'); window.location.href='manage_hotel.php';</script>";
     } else {
         echo "Error: " . mysqli_error($dbc);
     }

@@ -1,13 +1,13 @@
 <?php include 'header.php' ?>
 <main id="main">
   <?php
-  $eid = ($_GET['id']);
+  $id = ($_GET['id']);
   ?>
   <?php $con = mysqli_connect("localhost", "root", "", "kashmir") or die(mysqli_error());
-  $query = mysqli_query($con, "SELECT * FROM hotel WHERE Email='$eid'");
+  $query = mysqli_query($con, "SELECT * FROM hotels WHERE id='$id'");
   $count = 1;
   while ($r = mysqli_fetch_array($query)) {
-    $amnt = htmlentities($r['Amount']);
+    $amnt = htmlentities($r['amount']);
   }
   ?>
   <!-- ======= Breadcrumbs Section ======= -->
@@ -30,7 +30,7 @@
         <div class="form-group">
 
           <label for="exampleFormControlInput1">Hotel ID</label>
-          <input type="text" name="hid" class="form-control" id="exampleFormControlInput1" placeholder="ID" value="<?php echo $eid; ?>" readonly>
+          <input type="text" name="hid" class="form-control" id="exampleFormControlInput1" placeholder="ID" value="<?php echo $id; ?>" readonly>
         </div>
         <br />
         <div class="form-group">
@@ -120,7 +120,6 @@
 
 </main><!-- End #main -->
 <?php
-$con = mysqli_connect("localhost", "root", "", "kashmir") or die(mysqli_error());
 if (isset($_POST['submit'])) {
   $cname = $_POST['cname'];
   $ceid = $_POST['ceid'];
@@ -134,12 +133,12 @@ if (isset($_POST['submit'])) {
   $cpin = $_POST['cpin'];
   $amount = $_POST['amount'];
   $data = "INSERT INTO bookhotel(id,cname,ceid,rtype,ccnum,cin,cout,room,crcnum,bank,cpin,amount) VALUES ('$eid','$cname','$ceid','$rtype','$ccnum','$cin','$cout','$room','$crcnum','$bank','$cpin','$amount')";
-  mysqli_query($con, $data);
+  mysqli_query($dbc, $data);
 ?>
   <script type="text/javascript">
     alert("Hotel Booking Successful");
 
-    window.location.replace("http://localhost/project/");
+    window.location.replace(`http://${window.location.hostname}/${window.location.pathname}`);
   </script>
 <?php }
 include 'footer.php' ?>
