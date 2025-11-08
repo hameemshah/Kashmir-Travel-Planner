@@ -2,9 +2,7 @@
 <main id="main">
   <?php
   $id = ($_GET['id']);
-  ?>
-  <?php $con = mysqli_connect("localhost", "root", "", "kashmir") or die(mysqli_error());
-  $query = mysqli_query($con, "SELECT * FROM hotels WHERE id='$id'");
+  $query = mysqli_query($dbc, "SELECT * FROM hotels WHERE id='$id'");
   $count = 1;
   while ($r = mysqli_fetch_array($query)) {
     $amnt = htmlentities($r['amount']);
@@ -132,7 +130,7 @@ if (isset($_POST['submit'])) {
   $bank = $_POST['bank'];
   $cpin = $_POST['cpin'];
   $amount = $_POST['amount'];
-  $data = "INSERT INTO bookhotel(id,cname,ceid,rtype,ccnum,cin,cout,room,crcnum,bank,cpin,amount) VALUES ('$eid','$cname','$ceid','$rtype','$ccnum','$cin','$cout','$room','$crcnum','$bank','$cpin','$amount')";
+  $data = "INSERT INTO bookhotel(id,cname,ceid,rtype,ccnum,cin,cout,room,crcnum,bank,cpin,amount) VALUES ('$id','$cname','$ceid','$rtype','$ccnum','$cin','$cout','$room','$crcnum','$bank','$cpin','$amount')";
   mysqli_query($dbc, $data);
 ?>
   <script type="text/javascript">

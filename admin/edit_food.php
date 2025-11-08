@@ -3,10 +3,10 @@ $page_title = "Edit Food";
 include 'partials/header.php';
 include 'config/loggedin.php';
 
-// Check if email is set in URL
-if (isset($_GET['email'])) {
-    $email = mysqli_real_escape_string($dbc, $_GET['email']);
-    $query = "SELECT * FROM foods WHERE Email = '$email'";
+// Check if id is set in URL
+if (isset($_GET['id'])) {
+    $id = mysqli_real_escape_string($dbc, $_GET['id']);
+    $query = "SELECT * FROM foods WHERE id = '$id'";
     $result = mysqli_query($dbc, $query);
     
     if (mysqli_num_rows($result) == 1) {
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = mysqli_real_escape_string($dbc, $_POST['address']);
     $type = mysqli_real_escape_string($dbc, $_POST['type']);
     
-    $updateQuery = "UPDATE foods SET Name='$name', Property='$prop', Mobile_No='$mob', City='$city', Address='$address', Type='$type' WHERE Email='$email'";
+    $updateQuery = "UPDATE foods SET Name='$name', Property='$prop', Mobile_No='$mob', City='$city', Address='$address', Type='$type' WHERE id='$id'";
     
     if (mysqli_query($dbc, $updateQuery)) {
         echo "<script>alert('Food record updated successfully!'); window.location.href='manage_food.php';</script>";

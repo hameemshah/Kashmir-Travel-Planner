@@ -1,10 +1,12 @@
 <?php
 //This file contains the database access information.
 #Connect to database
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Set the database access information as constants:
-DEFINE ('DB_USER', 'root');
-DEFINE ('DB_PASSWORD', '');
+DEFINE ('DB_USER', 'kashmiruser');
+DEFINE ('DB_PASSWORD', 'password');
 DEFINE ('DB_HOST', 'localhost');
 DEFINE ('DB_NAME', 'kashmir');
 

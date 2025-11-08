@@ -39,8 +39,8 @@ $result = mysqli_query($dbc, $query);
                     <td><?= htmlspecialchars($row['Type']) ?></td>
                     <td><img src="../assets/img/foods/<?= htmlspecialchars($row['Pic1']) ?>" width="100"></td>
                     <td>
-                        <a href="edit_food.php?email=<?= urlencode($row['Email']) ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="delete_food.php?email=<?= urlencode($row['Email']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="edit_food.php?id=<?= urlencode($row['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="delete_food.php?id=<?= urlencode($row['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
